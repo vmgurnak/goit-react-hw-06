@@ -1,10 +1,20 @@
-import css from './Contact.module.css';
-
 // react icons
 import { FaPhone } from 'react-icons/fa6';
 import { IoIosContact } from 'react-icons/io';
 
-const Contact = ({ name, number, id, deleteContact }) => {
+import { useDispatch } from 'react-redux';
+
+import { deleteContact } from '../../redux/contactsSlice';
+
+import css from './Contact.module.css';
+
+const Contact = ({ name, number, id }) => {
+  const dispatch = useDispatch();
+
+  const handleOnClick = id => {
+    dispatch(deleteContact(id));
+  };
+
   return (
     <div className={css.contactWrap}>
       <div className={css.contactData}>
@@ -21,7 +31,7 @@ const Contact = ({ name, number, id, deleteContact }) => {
           <p className={css.contactTitle}>{number}</p>
         </div>
       </div>
-      <button className={css.contactBtn} onClick={() => deleteContact(id)}>
+      <button className={css.contactBtn} onClick={() => handleOnClick(id)}>
         Delete
       </button>
     </div>

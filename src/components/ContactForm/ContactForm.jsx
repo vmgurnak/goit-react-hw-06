@@ -1,10 +1,12 @@
-import css from './ContactForm.module.css';
-
 import { nanoid } from 'nanoid';
 import { useId } from 'react';
-
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+
+import { addContact } from '../../redux/contactsSlice';
+
+import css from './ContactForm.module.css';
 
 // Validation shema
 const FeedbackShema = Yup.object().shape({
@@ -25,19 +27,15 @@ const initialValues = {
 };
 
 // Component ContactForm with Formik
-const ContactForm = ({ addContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
   // id for label and field
   const nameId = useId();
   const numberId = useId();
 
   // Callback function for Submit
   const handleSubmitFormik = (values, actions) => {
-    // addContact({
-    //   id: nanoid(),
-    //   name: values.name,
-    //   number: values.number,
-    // });
-    addContact(values, (values.id = nanoid()));
+    dispatch(addContact(values, (values.id = nanoid())));
     actions.resetForm();
   };
 

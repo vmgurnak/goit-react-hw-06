@@ -1,8 +1,14 @@
 import css from './SearchBox.module.css';
 
-const SearchBox = ({ filter, setFilter }) => {
-  // function change state filter
-  const onChange = (evt) => setFilter(evt.target.value);
+import { useDispatch, useSelector } from 'react-redux';
+import { changeFilter } from '../../redux/contactsSlice';
+
+const SearchBox = () => {
+  const filters = useSelector(state => state.contacts.filters);
+
+  const dispatch = useDispatch();
+
+  const onChange = evt => dispatch(changeFilter(evt.target.value));
 
   return (
     <div className={css.searchBoxWrap}>
@@ -10,7 +16,7 @@ const SearchBox = ({ filter, setFilter }) => {
       <input
         className={css.searchBoxInput}
         type="text"
-        value={filter}
+        value={filters}
         onChange={onChange}
       />
     </div>
