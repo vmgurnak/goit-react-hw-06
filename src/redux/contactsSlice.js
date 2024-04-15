@@ -29,10 +29,6 @@ export const contactsSlice = createSlice({
       );
     },
     changeFilter(state, action) {
-      state.contacts.items = state.contacts.items.filter(contact => {
-        contact.name.toLowerCase().includes(action.payload.toLowerCase());
-      });
-      // state.contacts.items.pop();
       state.filters.name = action.payload;
     },
   },
