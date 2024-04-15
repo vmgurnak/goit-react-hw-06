@@ -8,9 +8,9 @@ const INITIAL_STATE = {
   contacts: {
     items: initialContacts,
   },
-  filters: {
-    name: '',
-  },
+  // filters: {
+  //   name: '',
+  // },
 };
 
 export const contactsSlice = createSlice({
@@ -28,15 +28,14 @@ export const contactsSlice = createSlice({
         contact => contact.id !== action.payload,
       );
     },
-    changeFilter(state, action) {
-      state.filters.name = action.payload;
-    },
+    // changeFilter(state, action) {
+    //   state.filters.name = action.payload;
+    // },
   },
 });
 
 // Генератори Action Creator
-export const { addContact, deleteContact, changeFilter } =
-  contactsSlice.actions;
+export const { addContact, deleteContact } = contactsSlice.actions;
 
 // Редюсер слайсу
 export const contactsReducer = contactsSlice.reducer;
