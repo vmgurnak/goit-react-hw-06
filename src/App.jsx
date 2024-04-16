@@ -18,9 +18,7 @@ const App = () => {
       <h1 className="title">Phonebook</h1>
 
       <ContactForm />
-
       <SearchBox />
-
       <ContactList />
     </div>
   );
