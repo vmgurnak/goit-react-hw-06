@@ -2,15 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import initialContacts from '../contactsList.json';
 
-console.log(initialContacts);
-
 const INITIAL_STATE = {
-  contacts: {
-    items: initialContacts,
-  },
-  // filters: {
-  //   name: '',
-  // },
+  items: initialContacts,
 };
 
 export const contactsSlice = createSlice({
@@ -21,16 +14,13 @@ export const contactsSlice = createSlice({
   // Об'єкт редюсерів
   reducers: {
     addContact(state, action) {
-      state.contacts.items.push(action.payload);
+      state.items.push(action.payload);
     },
     deleteContact(state, action) {
-      state.contacts.items = state.contacts.items.filter(
+      state.items = state.items.filter(
         contact => contact.id !== action.payload,
       );
     },
-    // changeFilter(state, action) {
-    //   state.filters.name = action.payload;
-    // },
   },
 });
 
@@ -39,3 +29,6 @@ export const { addContact, deleteContact } = contactsSlice.actions;
 
 // Редюсер слайсу
 export const contactsReducer = contactsSlice.reducer;
+
+// функції-селектори для використання в useSelector
+// export const selectContacts = state => state.items;
