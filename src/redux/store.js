@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { contactsReducer } from './contactsSlice';
 import { filtersReducer } from './filtersSlice';
 
+// With Redux Persist
+
 import {
   persistStore,
   persistReducer,
@@ -20,17 +22,9 @@ const contactListConfig = {
   whitelist: ['items'],
 };
 
-// export const store = configureStore({
-//   reducer: {
-//     contacts: contactsReducer,
-//     filters: filtersReducer,
-//   },
-// });
-
 export const store = configureStore({
   reducer: {
-    // contacts: contactsReducer,
-    contact: persistReducer(contactListConfig, contactsReducer),
+    contacts: persistReducer(contactListConfig, contactsReducer),
     filters: filtersReducer,
   },
   middleware: getDefaultMiddleware =>
@@ -42,3 +36,12 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+// Without Redux Persist
+
+// export const store = configureStore({
+//   reducer: {
+//     contacts: contactsReducer,
+//     filters: filtersReducer,
+//   },
+// });
