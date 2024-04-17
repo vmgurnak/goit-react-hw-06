@@ -31,4 +31,4 @@ export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
 
 // функції-селектори для використання в useSelector
-// export const selectContacts = state => state.contacts.items;
+export const selectContacts = state => state.contacts.items;

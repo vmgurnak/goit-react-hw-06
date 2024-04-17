@@ -3,7 +3,6 @@ import { contactsReducer } from './contactsSlice';
 import { filtersReducer } from './filtersSlice';
 
 // With Redux Persist
-
 import {
   persistStore,
   persistReducer,
@@ -36,12 +35,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-// Without Redux Persist
-
-// export const store = configureStore({
-//   reducer: {
-//     contacts: contactsReducer,
-//     filters: filtersReducer,
-//   },
-// });

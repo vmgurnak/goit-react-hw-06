@@ -24,4 +24,4 @@ export const { changeFilter } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
 
 // функції-селектори для використання в useSelector
-// export const selectNameFilter = state => state.filters.name;
+export const selectNameFilter = state => state.filters.name;
